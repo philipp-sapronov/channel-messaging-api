@@ -1,10 +1,17 @@
 import React from "react";
 import { Box, Button, Text } from "@chakra-ui/react";
 
-export const AvocadoButton = ({ onClick }: { onClick: () => void }) => {
+export const AvocadoButton = ({
+  onClick,
+  isDisabled,
+}: {
+  onClick: () => void;
+  isDisabled: boolean;
+}) => {
   return (
     <Box>
       <Button
+        isLoading={isDisabled}
         onClick={onClick}
         bg="green.400"
         _hover={{ bg: "green.500" }}

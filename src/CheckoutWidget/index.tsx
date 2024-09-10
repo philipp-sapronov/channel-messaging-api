@@ -22,13 +22,17 @@ export const CheckoutWidget = ({
 }: {
   initialAmount: number;
 }) => {
+  const [isReady, setIsReady] = useState(false);
   const { document, window: frameWindow } = useFrame();
   const [amount, setAmount] = useState(initialAmount);
 
-  const client = useMemo(() => new Client({ window: frameWindow }), []);
+  const client = useMemo(() => new Client(), []);
 
   useEffect(() => {
-    client.connect();
+    client.connect({
+      window: frameWindow,
+      ready: () => setIsReady(true),
+    });
 
     client.addEventListener("changeAmount", (event) => {
       const { amount } = (event as CustomEvent).detail;
@@ -60,6 +64,7 @@ export const CheckoutWidget = ({
           <Header amount={amount} />
           <PaymentInfo data={checkoutData} />
           <WatermelonButton
+            isDisabled={!isReady}
             onClick={() => {
               window.parent.postMessage({
                 type: "checkout",
@@ -71,6 +76,7 @@ export const CheckoutWidget = ({
             }}
           />
           <AvocadoButton
+            isDisabled={!isReady}
             onClick={() => {
               client.notify("checkout", {
                 provider: "🥑 Avocado",

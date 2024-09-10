@@ -1,10 +1,17 @@
 import React from "react";
 import { Box, Button, Text } from "@chakra-ui/react";
 
-export const WatermelonButton = ({ onClick }: { onClick: () => void }) => {
+export const WatermelonButton = ({
+  onClick,
+  isDisabled,
+}: {
+  onClick: () => void;
+  isDisabled: boolean;
+}) => {
   return (
     <Box>
       <Button
+        isLoading={isDisabled}
         onClick={onClick}
         bg="purple.400"
         _hover={{ bg: "purple.500" }}

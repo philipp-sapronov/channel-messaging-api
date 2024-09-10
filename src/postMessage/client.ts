@@ -5,18 +5,12 @@ export class Client extends EventTarget {
 
   window: Window = window;
 
-  constructor(params?: { window?: Window }) {
+  constructor() {
     super();
-
-    if (params?.window) {
-      this.window = params.window;
-    }
   }
 
-  connect(params?: { ready?: () => {} }): void {
+  connect(params?: { ready?: () => void; window?: Window }): void {
     const onMessage = (event: MessageEvent) => {
-      console.log("message >>", event.data.type);
-
       if (!event.source) return;
 
       if (event.data.type === ESTABLISH_CHANNEL && event.ports[0]) {
@@ -29,6 +23,10 @@ export class Client extends EventTarget {
         params?.ready?.();
       }
     };
+
+    if (params?.window) {
+      this.window = params.window;
+    }
 
     this.window.addEventListener("message", onMessage);
   }
