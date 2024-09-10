@@ -1,5 +1,7 @@
 # Channel Messaging API Demo App
 
+**[Try it on the github pages](https://philipp-sapronov.github.io/channel-messaging-api)**
+
 **🧙 Sample Code for DevTools Console:**
 
 To intercept messages sent from an iframe, insert the following code into the DevTools console.
