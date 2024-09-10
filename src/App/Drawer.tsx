@@ -12,7 +12,7 @@ import {
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { a11yDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
-const scriptExample = `window.addEventListener("message", (e) => alert(JSON.stringify(e.data.data)));`;
+const scriptExample = `window.addEventListener("message", (e) => alert(JSON.stringify(e.data.payload)));`;
 
 export const Drawer = ({
   isDrawerOpen,
