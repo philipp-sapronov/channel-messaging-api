@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/channel-messaging-api/static/js/main.05d97051.js",
+    "main.js": "/channel-messaging-api/static/js/main.61f9e762.js",
     "index.html": "/channel-messaging-api/index.html",
-    "main.05d97051.js.map": "/channel-messaging-api/static/js/main.05d97051.js.map"
+    "main.61f9e762.js.map": "/channel-messaging-api/static/js/main.61f9e762.js.map"
   },
   "entrypoints": [
-    "static/js/main.05d97051.js"
+    "static/js/main.61f9e762.js"
   ]
 }
