@@ -5,7 +5,7 @@ import styled from "@emotion/styled";
 
 import { CheckoutWidget } from "../CheckoutWidget";
 import { Wrapper } from "./Wrapper";
-import { Host } from "../postMessage/host";
+import { HostClient } from "../postMessage";
 import { Drawer } from "./Drawer";
 import { PageInfo } from "./PageInfo";
 import { AmountInput } from "./AmountInput";
@@ -15,7 +15,8 @@ const INITIAL_AMOUNT = 100;
 const IFrame = styled(Frame)`
   border: none;
   border-radius: 8px;
-  box-shadow: var(--chakra-shadows-xl);
+  box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.1),
+    0 2px 6px 0px rgba(0, 0, 0, 0.05);
   background-color: white;
 `;
 
@@ -26,10 +27,10 @@ function App() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [logs, setLogs] = useState<string[]>([]);
 
-  const host = useMemo(() => new Host(), []);
+  const hostClient = useMemo(() => new HostClient(), []);
 
   const onAmountChange = useCallback((value: number) => {
-    host.notify("changeAmount", { amount: value }, "*");
+    hostClient.notify("changeAmount", { amount: value });
     setAmount(value);
   }, []);
 
@@ -43,20 +44,20 @@ function App() {
   useEffect(() => {
     if (!frameRef?.contentWindow) return;
 
-    host.connect({
+    hostClient.connect({
       clientOrigin: "*",
       clientWindow: frameRef.contentWindow,
-      onSuccess: () => {
+      onReady: () => {
         setIframeReady(true);
       },
     });
 
-    host.addEventListener("checkout", (e) => {
+    hostClient.addEventListener("checkout", (e) => {
       setLog((e as CustomEvent).detail);
     });
 
     return () => {
-      host.close("*");
+      hostClient.close();
     };
   }, [frameRef, setLog]);
 

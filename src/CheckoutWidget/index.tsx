@@ -8,7 +8,7 @@ import { Header } from "./Header";
 import { PaymentInfo } from "./PaymentInfo";
 import { WatermelonButton } from "./WatermelonButton";
 import { AvocadoButton } from "./AvocadoButton";
-import { Client } from "../postMessage/client";
+import { Client } from "../postMessage";
 
 const createMemoizedCache = weakMemoize((container: any) => {
   return createCache({
@@ -31,7 +31,7 @@ export const CheckoutWidget = ({
   useEffect(() => {
     client.connect({
       window: frameWindow,
-      ready: () => setIsReady(true),
+      onReady: () => setIsReady(true),
     });
 
     client.addEventListener("changeAmount", (event) => {
