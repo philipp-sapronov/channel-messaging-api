@@ -4,6 +4,8 @@ import { CHANNEL_ESTABLISHED, ESTABLISH_CHANNEL, IMessage } from "./defs";
  * The `Client` class establishes and manages a communication channel
  * with a host using the `MessageChannel` API. It provides methods to connect,
  * send notifications, and handle messages received from the host.
+ *
+ * TODO: Logger for logging errors and messages.
  */
 export class Client extends EventTarget {
   /**

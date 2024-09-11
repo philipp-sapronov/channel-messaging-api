@@ -10,6 +10,8 @@ import {
  * The `HostClient` class establishes and manages a communication channel
  * between the host and a client using the `MessageChannel` API. It provides
  * methods to connect, send messages, and handle connection status.
+ *
+ * TODO: Logger for logging errors and messages.
  */
 export class HostClient extends EventTarget {
   /**

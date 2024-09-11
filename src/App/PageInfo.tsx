@@ -4,6 +4,8 @@ import { Box, Button, Divider, Flex, Text } from "@chakra-ui/react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import { a11yDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { Github } from "./Github";
+import { Link } from "./Link";
+import { links } from "./defs";
 
 export const PageInfo = ({
   messageLogs,
@@ -24,14 +26,9 @@ export const PageInfo = ({
         <Text color="gray.300" py="1" maxW="600px">
           Explore the security differences between postMessage and Channel
           Messaging API in real-time. See how{" "}
-          <Text
-            color="green.400"
-            textDecoration="underline"
-            as="a"
-            href="https://developer.mozilla.org/en-US/docs/Web/API/Channel_Messaging_API"
-          >
+          <Link onDark href={links.ChannelMessagingApi}>
             Channel Messaging API
-          </Text>{" "}
+          </Link>{" "}
           keeps your data safe.
         </Text>
         <Button colorScheme="green" variant="solid" mt="2" onClick={onReadMore}>
