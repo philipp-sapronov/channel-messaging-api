@@ -52,9 +52,8 @@ export const PageInfo = ({
         </Box>
       )}
       {messageLogs.map((log, index) => (
-        <Box bg="gray.700" borderRadius="md" p="2" mb="2">
+        <Box bg="gray.700" borderRadius="md" p="2" mb="2" key={index}>
           <SyntaxHighlighter
-            key={index}
             customStyle={{
               fontSize: "14px",
               backgroundColor: "transparent",
