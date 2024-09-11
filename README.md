@@ -2,6 +2,8 @@
 
 **[Try it on Github Pages](https://philipp-sapronov.github.io/channel-messaging-api)**
 
+<img width="1792" alt="image" src="https://github.com/user-attachments/assets/a185aaed-961d-49ee-b0ae-e372575dce1b">
+
 ### How to use this demo
 
 **🧙 Insert Malicious Script**
